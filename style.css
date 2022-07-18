@@ -1,0 +1,19 @@
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-open {
+    display: fixed;
+    position: fixed;
+    justify-content: center;
+
+    background-color: lightblue;
+}
+
+.form-closed {
+    display: none;
+    position: fixed;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="./style.css"/>
+        <title>Odin Project Exercise</title>
+    </head>
+    <body>
+        <div class="flex-container">
+            <div id="form" class="form-closed">
+                <legend>ADD NEW BOOK</legend>
+                <form>
+                    <fieldset>
+                        <label for="title">Title</label>
+                        <input type="text" name="title"/>
+                    </fieldset>
+                    <fieldset>
+                        <label for="author">Author</label>
+                        <input type="text" name="author"/>
+                    </fieldset>
+                    <fieldset>
+                        <label for="pageCount">Number of Pages</label>
+                        <input type="number" name="pageCount"/>
+                    </fieldset>
+                    <fieldset>
+                        <label for="readStatus">Read?</label>
+                        <input type="checkbox" name="readStatus"/>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="content">
+            <div class="header">
+                <h1>Your Library</h1>
+                <button onClick="displayForm">NEW BOOK</button>
+            </div>
+        </div>
+        <script type="text/javascript" src="./script.js"></script>
+    </body>
+</html>
