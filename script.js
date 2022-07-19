@@ -5,20 +5,24 @@ function Book(title) {
 }
 
 function addBookToLibrary(title) {
-    let newBook = new Book(title);
+    let book = new Book(title);
 
-    myLibrary.push(newBook);
-    console.log(myLibrary);
+    myLibrary.push(book);
+
+    let newBook = document.createElement("h2");
+    let newBookTitle = document.createTextNode(`${myLibrary[myLibrary.length - 1]}`);
+    newBook.appendChild(newBookTitle);
+
+    document.getElementById("library").appendChild(newBook);
 }
 
 function displayForm() {
-    if (document.getElementById("form").classList === "form-open") {
-        document.getElementById("form").classList = "form-closed";
+    console.log("test");
+
+    if (document.getElementById("form-container").classList === "form-container-open") {
+        document.getElementById("form-container").classList = "form-container-closed";
     }
     else {
-        document.getElementById("form").classList = "form-open";
+        document.getElementById("form-container").classList = "form-container-open";
     }
 }
-
-addBookToLibrary('The Catcher in the Rye');
-addBookToLibrary('The Dead Zone');
