@@ -23,3 +23,8 @@
     display: flex;
     justify-content: space-between;
 }
+
+.library > div {
+    display: flex;
+    flex-direction: column;
+}

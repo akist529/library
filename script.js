@@ -16,13 +16,34 @@ function addBookToLibrary() {
 
     myLibrary.push(book);
 
+    let bookDiv = document.createElement("div");
+    bookDiv.classList = `book${myLibrary.length}`;
+    document.querySelector(".library").appendChild(bookDiv);
+
     let titleText = document.createElement("h2");
-    titleText.id = `book${myLibrary.length}`;
+    titleText.id = `book-title${myLibrary.length}`;
+    let authorText = document.createElement("h2");
+    authorText.id = `book-author${myLibrary.length}`;
+    let pageText = document.createElement("h2");
+    pageText.id = `book-pages${myLibrary.length}`;
+    let readText = document.createElement("h2");
+    readText.id = `book-read${myLibrary.length}`;
 
-    document.querySelector(".library").appendChild(titleText);
+    document.querySelector(`.book${myLibrary.length}`).appendChild(titleText);
+    document.querySelector(`.book${myLibrary.length}`).appendChild(authorText);
+    document.querySelector(`.book${myLibrary.length}`).appendChild(pageText);
+    document.querySelector(`.book${myLibrary.length}`).appendChild(readText);
 
-    let titleTextNode = document.createTextNode(`${myLibrary[myLibrary.length - 1].title}`);
-    document.getElementById(`book${myLibrary.length}`).appendChild(titleTextNode);
+    let titleNode = document.createTextNode(`${myLibrary[myLibrary.length - 1].title}`);
+    document.getElementById(`book-title${myLibrary.length}`).appendChild(titleNode);
+    let authorNode = document.createTextNode(`${myLibrary[myLibrary.length - 1].author}`);
+    document.getElementById(`book-author${myLibrary.length}`).appendChild(authorNode);
+    let pageNode = document.createTextNode(`${myLibrary[myLibrary.length - 1].pageCount}`);
+    document.getElementById(`book-pages${myLibrary.length}`).appendChild(pageNode);
+    let readNode = document.createTextNode(
+        (readStatus === true) ? "You've read this book" : "You haven't read this book yet"
+    );
+    document.getElementById(`book-read${myLibrary.length}`).appendChild(readNode);
 
     displayForm();
 
