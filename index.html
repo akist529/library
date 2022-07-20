@@ -8,25 +8,28 @@
     <body>
         <div id="form-container" class="form-container-closed">
             <div class="form">
-                <legend>ADD NEW BOOK</legend>
-                <form action="">
+                <div class="form-header">
+                    <legend>ADD NEW BOOK</legend>
+                    <button onClick="displayForm()">&times;</button>
+                </div>
+                <form onSubmit="event.preventDefault()">
                     <fieldset>
                         <label for="title">Title</label>
-                        <input type="text" name="title"/>
+                        <input type="text" name="title" id="title"/>
                     </fieldset>
                     <fieldset>
                         <label for="author">Author</label>
-                        <input type="text" name="author"/>
+                        <input type="text" name="author" id="author"/>
                     </fieldset>
                     <fieldset>
                         <label for="pageCount">Number of Pages</label>
-                        <input type="number" name="pageCount"/>
+                        <input type="number" name="pageCount" id="pageCount"/>
                     </fieldset>
                     <fieldset>
                         <label for="readStatus">Read?</label>
-                        <input type="checkbox" name="readStatus"/>
+                        <input type="checkbox" name="readStatus" id="readStatus"/>
                     </fieldset>
-                    <button>SUBMIT</button>
+                    <button onClick="addBookToLibrary()">SUBMIT</button>
                 </form>
             </div>
         </div>
@@ -35,8 +38,7 @@
                 <h1>Your Library</h1>
                 <button onClick="displayForm()">NEW BOOK</button>
             </div>
-            <div id="library">
-            </div>
+            <div class="library"></div>
         </div>
         <script type="text/javascript" src="./script.js"></script>
     </body>

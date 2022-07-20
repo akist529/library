@@ -18,3 +18,8 @@
 
     background-color: lightblue;
 }
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+}
