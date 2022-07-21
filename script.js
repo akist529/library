@@ -8,6 +8,9 @@ function Book(title, author, pageCount, readStatus) {
 }
 
 function addBookToLibrary() {
+    document.querySelector(".library-default").style.display = "none";
+    document.querySelector(".library-headers").style.display = "flex";
+
     let title = document.getElementById("title").value;
     let author = document.getElementById("author").value;
     let pageCount = document.getElementById("pageCount").value;
@@ -18,7 +21,7 @@ function addBookToLibrary() {
 
     let bookDiv = document.createElement("div");
     bookDiv.classList = `book${myLibrary.length}`;
-    document.querySelector(".library").appendChild(bookDiv);
+    document.querySelector(".library-entries").appendChild(bookDiv);
 
     let titleText = document.createElement("h2");
     titleText.id = `book-title${myLibrary.length}`;
@@ -41,7 +44,7 @@ function addBookToLibrary() {
     let pageNode = document.createTextNode(`${myLibrary[myLibrary.length - 1].pageCount}`);
     document.getElementById(`book-pages${myLibrary.length}`).appendChild(pageNode);
     let readNode = document.createTextNode(
-        (readStatus === true) ? "You've read this book" : "You haven't read this book yet"
+        (readStatus === true) ? "Yes" : "No"
     );
     document.getElementById(`book-read${myLibrary.length}`).appendChild(readNode);
 

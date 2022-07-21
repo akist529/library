@@ -136,7 +136,25 @@ form {
         line-height: 15px;
     }
 
-.library > div {
+.library {
+    background-color: rgb(225, 225, 225);
+
+    margin: 50px;
+    padding: 20px;
+    min-height: 50px;
+}
+
+.library-default {
+    text-align: center;
+    line-height: 50px;
+}
+
+.library-headers {
+    display: none;
+    justify-content: space-evenly;
+}
+
+.library-entries > div {
     display: flex;
-    flex-direction: column;
+    justify-content: space-evenly;
 }
