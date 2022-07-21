@@ -13,6 +13,11 @@ form {
     line-height: 40px;
 }
 
+legend {
+    font-size: 48px;
+    text-align: center;
+}
+
 .form-container-open {
     display: flex;
     justify-content: center;
@@ -38,12 +43,11 @@ form {
     border: 4px solid rgb(225, 225, 225);
     border-radius: 10px;
 
-    width: 80%;
+    width: 50%;
     height: 30%;
 }
 
     .form button {
-        padding: auto;
         border-width: 10px;
         border-radius: 8px;
         background: linear-gradient(to bottom right, rgb(240, 240, 240), rgb(150, 150, 150));
@@ -51,6 +55,7 @@ form {
         font-size: 18px;
         line-height: 25px;
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        width: auto;
 
         justify-self: center;
     }
@@ -58,27 +63,26 @@ form {
     .form fieldset {
         display: flex;
         justify-content: space-between;
-        gap: 20px;
+        margin: 0 10%;
 
         font-size: 24px;
         border: none;
     }
 
-    .form input {
+    .form input[type="text"] {
         background-color: rgb(225, 225, 225);
+        width: 500px;
+        height: 30px;
     }
 
-.form-header {
-    display: flex;
-    justify-content: space-between;
-}
-
-    .form-header legend {
-        font-size: 48px;
+    .form input[type="number"] {
+        background-color: rgb(225, 225, 225);
+        width: 100px;
+        height: 30px;
     }
 
-    .form-header button {
-        width: 20px;
+    .form input[type="checkbox"] {
+        width: 30px;
     }
 
 .header {
@@ -140,21 +144,60 @@ form {
     background-color: rgb(225, 225, 225);
 
     margin: 50px;
-    padding: 20px;
     min-height: 50px;
+
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: repeat(auto-fill, 100%);
 }
 
 .library-default {
+    display: block;
+
     text-align: center;
     line-height: 50px;
+
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+
+    border-left: 3px solid red;
 }
 
 .library-headers {
     display: none;
     justify-content: space-evenly;
+
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+
+    border-left: 3px solid red;
 }
 
-.library-entries > div {
-    display: flex;
-    justify-content: space-evenly;
+.library-entries {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(auto-fill, 100%);
+
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+    .library-entries > div {
+        display: flex;
+        justify-content: space-evenly;
+
+        grid-column: 1 / -1;
+
+        border-left: 5px solid red;
+        border-top: 2px solid blue;
+    }
+
+#form-esc {
+    position: fixed;
+    margin: -20px;
+    border-radius: 4px;
+}
+
+#form-submit {
+    margin: 0 50%;
 }

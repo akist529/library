@@ -8,10 +8,8 @@
     <body>
         <div id="form-container" class="form-container-closed">
             <div class="form">
-                <div class="form-header">
-                    <button onClick="displayForm()">ESC</button>
-                    <legend>ADD NEW BOOK</legend>
-                </div>
+                <button id="form-esc" onClick="displayForm()">ESC</button>
+                <legend>ADD NEW BOOK</legend>
                 <form onSubmit="event.preventDefault()">
                     <fieldset>
                         <label for="title">Title</label>
@@ -29,7 +27,7 @@
                         <label for="readStatus">Read?</label>
                         <input type="checkbox" name="readStatus" id="readStatus"/>
                     </fieldset>
-                    <button onClick="addBookToLibrary()">SUBMIT</button>
+                    <button id="form-submit" onClick="addBookToLibrary()">SUBMIT</button>
                 </form>
             </div>
         </div>
@@ -40,14 +38,14 @@
             </div>
             <div class="library">
                 <div class="library-default">
-                    <h2>Your library is currently empty.</h2>
-                    <h3>Add some books to populate it!</h3>
+                    <h2 class="header-text">Your library is currently empty.</h2>
+                    <h3 class="header-text">Add some books to populate it!</h3>
                 </div>
                 <div class="library-headers">
-                    <h2>Title</h2>
-                    <h2>Author</h2>
-                    <h2>Page Count</h2>
-                    <h2>Read?</h2>
+                    <h2 class="header-text">Title</h2>
+                    <h2 class="header-text">Author</h2>
+                    <h2 class="header-text">Page Count</h2>
+                    <h2 class="header-text">Read?</h2>
                 </div>
                 <div class="library-entries">
 
