@@ -5,7 +5,7 @@
 
 body {
     background-image: url("https://images.unsplash.com/photo-1639690381680-4f2f4ba2a2ec");
-    background-size: 100vw 100vh;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
@@ -71,7 +71,7 @@ legend {
 
     .form input[type="text"] {
         background-color: rgb(225, 225, 225);
-        width: 500px;
+        width: 75%;
         height: 30px;
     }
 
@@ -144,11 +144,10 @@ legend {
     background-color: rgb(225, 225, 225);
 
     margin: 50px;
-    min-height: 50px;
 
     display: grid;
-    grid-template-columns: 200px 1fr;
-    grid-template-rows: repeat(auto-fill, 100%);
+    grid-template-columns: 15% 1fr;
+    grid-template-rows: auto 1fr;
 }
 
 .library-default {
@@ -166,6 +165,8 @@ legend {
 .library-headers {
     display: none;
     justify-content: space-evenly;
+    line-height: 50px;
+    padding: 30px 0;
 
     grid-column: 2 / 3;
     grid-row: 1 / 2;
@@ -176,10 +177,14 @@ legend {
 .library-entries {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(auto-fill, 100%);
+    grid-template-rows: repeat(auto-fill, 50px);
 
     grid-column: 2 / 3;
     grid-row: 2 / 3;
+
+    border-left: 3px solid red;
+
+    height: fit-content;
 }
 
     .library-entries > div {
@@ -188,8 +193,9 @@ legend {
 
         grid-column: 1 / -1;
 
-        border-left: 5px solid red;
         border-top: 2px solid blue;
+
+        padding: 10px 0;
     }
 
 #form-esc {
