@@ -1,3 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("https://images.unsplash.com/photo-1639690381680-4f2f4ba2a2ec");
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+}
+
 .form-container-open {
     display: flex;
     justify-content: center;
@@ -16,13 +27,83 @@
     position: fixed;
     justify-content: center;
 
-    background-color: lightblue;
+    background-color: rgb(126, 38, 38);
+    color: rgb(225, 225, 225);
 }
+
+    .form fieldset {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .form input {
+        background-color: rgb(225, 225, 225);
+    }
 
 .form-header {
     display: flex;
     justify-content: space-between;
 }
+
+.form-header legend {
+    font-size: 32px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("https://images.unsplash.com/photo-1603058817990-2b9a9abbce86");
+    background-position: center 0px;
+    background-size: 2600px;
+
+    line-height: 100px;
+    padding: 0 0 40px 0;
+
+    font-family: "Arial";
+    color: rgb(225, 225, 225);
+
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+
+    height: 200px;
+}
+
+    .header h1 {
+        font-size: 48px;
+        letter-spacing: 2px;
+        text-shadow: 5px 5px 5px rgb(0, 0, 0, 0.2);
+    }
+
+    .header button {
+        padding: 10px;
+        border-width: 20px;
+        border-radius: 8px;
+        background: linear-gradient(to bottom right, rgb(240, 240, 240), rgb(150, 150, 150));
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+        font-size: 24px;
+        line-height: 25px;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+
+        justify-self: center;
+    }
+
+    .header button:hover {
+        cursor: pointer;
+    }
+
+    .header button:active {
+        transition: 30ms;
+
+        padding: 10px;
+        background: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(165, 165, 165));
+        box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.8);
+
+        font-size: 14px;
+        line-height: 15px;
+    }
 
 .library > div {
     display: flex;
