@@ -20,6 +20,8 @@ function addBookToLibrary() {
 
     let bookDiv = document.createElement("div");
     bookDiv.classList = `book${myLibrary.length}`;
+    bookDiv.setAttribute("onmouseover", `revealButton(${myLibrary.length}, event)`);
+    bookDiv.setAttribute("onmouseout", `revealButton(${myLibrary.length}, event)`);
     document.querySelector(".library-entries").appendChild(bookDiv);
 
     let titleText = document.createElement("h3");
@@ -30,11 +32,16 @@ function addBookToLibrary() {
     pageText.id = `book-pages${myLibrary.length}`;
     let readText = document.createElement("h3");
     readText.id = `book-read${myLibrary.length}`;
+    let delButton = document.createElement("button");
+    delButton.id = `book-del${myLibrary.length}`;
+    delButton.innerHTML = "ERASE";
+    delButton.setAttribute("onClick", `deleteItem('book${myLibrary.length}')`);
 
     document.querySelector(`.book${myLibrary.length}`).appendChild(titleText);
     document.querySelector(`.book${myLibrary.length}`).appendChild(authorText);
     document.querySelector(`.book${myLibrary.length}`).appendChild(pageText);
     document.querySelector(`.book${myLibrary.length}`).appendChild(readText);
+    document.querySelector(`.book${myLibrary.length}`).appendChild(delButton);
 
     let titleNode = document.createTextNode(`${myLibrary[myLibrary.length - 1].title}`);
     document.getElementById(`book-title${myLibrary.length}`).appendChild(titleNode);
@@ -71,6 +78,33 @@ function changeHeader() {
     }
     else {
         document.querySelector(".library-default").style.display = "none";
-        document.querySelector(".library-headers").style.display = "flex";
+        document.querySelector(".library-headers").style.display = "grid";
+    }
+}
+
+function resetForm() {
+    document.querySelector(".warning-container").style.display = "flex";
+}
+
+function revealButton(bookNum, event) {
+    if (event.type === "mouseover") {
+        document.getElementById(`book-del${bookNum}`).style.right = "5vw";
+    }
+    else {
+        document.getElementById(`book-del${bookNum}`).style.right = "0vw";
+    }
+}
+
+function deleteItem(bookNum) {
+    document.querySelector(`.book${bookNum}`).remove();
+    myLibrary.splice(bookNum - 1, 1);
+
+    if (myLibrary.length === 0) {
+        document.querySelector(".library-default").style.display = "block";
+        document.querySelector(".library-headers").style.display = "none";
+    }
+    else {
+        document.querySelector(".library-default").style.display = "none";
+        document.querySelector(".library-headers").style.display = "grid";
     }
 }
