@@ -235,17 +235,23 @@ legend {
 
 .warning-container {
     display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+
     justify-content: center;
     align-items: center;
-    position: fixed;
-
-    background-color: rgba(0, 0, 0, 0,2);
 }
 
 .warning {
-    display: fixed;
+    display: flex;
+    flex-direction: column;
     position: fixed;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
     padding: 20px;
 
     background-color: rgb(126, 38, 38);
@@ -256,6 +262,19 @@ legend {
 
     width: 50%;
     height: 30%;
+}
+
+.warning button {
+    border-width: 10px;
+    border-radius: 8px;
+    background: linear-gradient(to bottom right, rgb(240, 240, 240), rgb(150, 150, 150));
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    line-height: 25px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    width: auto;
+
+    justify-self: center;
 }
 
 #form-esc {

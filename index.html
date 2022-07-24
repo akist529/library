@@ -36,7 +36,7 @@
                 <h1>Your Book Library</h1>
                 <div class="header-buttons">
                     <button onClick="displayForm()">NEW<br/>BOOK</button>
-                    <button onClick="resetForm()">RESET<br/>FORM</button>
+                    <button onClick="showReset()">RESET<br/>FORM</button>
                 </div>
             </div>
             <div class="library">
@@ -56,10 +56,14 @@
         </div>
         <div class="warning-container">
             <div class="warning">
-                <strong><h2>Warning! This will delete all entries in your library.</h2></strong>
-                <strong><h3>Are you sure?</h3></strong>
-                <button>Yes</button>
-                <button>No</button>
+                <div>
+                    <strong><h2>Warning! This will delete all entries in your library.</h2></strong>
+                    <strong><h3>Are you sure?</h3></strong>
+                </div>
+                <div>
+                    <button onClick="resetForm()">Yes</button>
+                    <button onClick="showReset()">No</button>
+                </div>
             </div>
         </div>
         <footer>
