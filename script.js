@@ -114,6 +114,9 @@ function revealButton(bookNum, event) {
 }
 
 function deleteItem(button) {
+    document.querySelector(`.${button.target.parentElement.className}`).style.maxHeight = "0";
+
+    /*
     const bookNum = button.target.id[button.target.id.length - 1];
     document.querySelector(`.${button.target.parentElement.className}`).remove();
 
@@ -125,13 +128,14 @@ function deleteItem(button) {
     }
 
     if (myLibrary.length === 0) {
-        document.querySelector(".library-default").style.display = "block";
+        document.querySelector(".library-default").style.display = "grid";
         document.querySelector(".library-headers").style.display = "none";
     }
     else {
         document.querySelector(".library-default").style.display = "none";
         document.querySelector(".library-headers").style.display = "grid";
     }
+    */
 }
 
 function checkAnswers() {
