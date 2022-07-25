@@ -40,7 +40,7 @@ function addBookToLibrary() {
     document.querySelector(`.book${myLibrary.length}`).appendChild(readText);
     document.querySelector(`.book${myLibrary.length}`).appendChild(delButton);
 
-    document.getElementById(`book-del${myLibrary.length}`).addEventListener("onClick", deleteItem());
+    document.getElementById(`book-del${myLibrary.length}`).setAttribute("onClick", "deleteItem(event)");
 
     let titleNode = document.createTextNode(`${myLibrary[myLibrary.length - 1].title}`);
     document.getElementById(`book-title${myLibrary.length}`).appendChild(titleNode);
@@ -94,8 +94,6 @@ function showReset() {
 function resetForm() {
     const books = document.querySelectorAll("div[class^='book']");
     
-    console.log(books);
-
     myLibrary = [];
 
     for (const book of books) {
@@ -115,13 +113,16 @@ function revealButton(bookNum, event) {
     }
 }
 
-function deleteItem(item) {
-    console.log(item);
+function deleteItem(button) {
+    const bookNum = button.target.id[button.target.id.length - 1];
+    document.querySelector(`.${button.target.parentElement.className}`).remove();
 
-    /*
-    document.querySelector(`.book${bookNum}`).remove();
-    myLibrary.splice(bookNum - 1, 1);
-    */
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].title === button.target.parentElement.childNodes[0].textContent) {
+            myLibrary.splice(i, 1);
+            break;
+        }
+    }
 
     if (myLibrary.length === 0) {
         document.querySelector(".library-default").style.display = "block";

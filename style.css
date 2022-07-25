@@ -7,6 +7,7 @@ body {
     background-image: url("https://images.unsplash.com/photo-1639690381680-4f2f4ba2a2ec");
     background-size: cover;
     background-repeat: no-repeat;
+    height: 100vh;
 }
 
 form {
@@ -44,7 +45,6 @@ legend {
     border-radius: 10px;
 
     width: 50%;
-    height: 30%;
 }
 
     .form button {
