@@ -133,3 +133,13 @@ function deleteItem(button) {
         document.querySelector(".library-headers").style.display = "grid";
     }
 }
+
+function checkAnswers() {
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].title = document.getElementById("title").value) {
+            return;
+        }
+    }
+
+    addBookToLibrary();
+}
