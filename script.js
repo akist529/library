@@ -136,10 +136,15 @@ function deleteItem(button) {
 
 function checkAnswers() {
     for (let i = 0; i < myLibrary.length; i++) {
-        if (myLibrary[i].title = document.getElementById("title").value) {
+        if (myLibrary[i].title === document.getElementById("title").value) {
+            document.querySelector(".duplicate-container").style.display = "flex";
             return;
         }
     }
 
     addBookToLibrary();
+}
+
+function returnToForm() {
+    document.querySelector('.duplicate-container').style.display = 'none';
 }
