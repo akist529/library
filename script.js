@@ -116,7 +116,6 @@ function revealButton(bookNum, event) {
 function deleteItem(button) {
     document.querySelector(`.${button.target.parentElement.className}`).style.maxHeight = "0";
 
-    /*
     const bookNum = button.target.id[button.target.id.length - 1];
     document.querySelector(`.${button.target.parentElement.className}`).remove();
 
@@ -135,7 +134,6 @@ function deleteItem(button) {
         document.querySelector(".library-default").style.display = "none";
         document.querySelector(".library-headers").style.display = "grid";
     }
-    */
 }
 
 function checkAnswers() {
@@ -211,11 +209,19 @@ function sortLibrary(event) {
         entry.remove();
     }
 
-    let newLibrary = oldLibrary.sort(sortFunc(sortType, 'Document'));
+    let newLibrary = oldLibrary.sort(
+        sortFunc(sortType, 'Document')
+        );
+    myLibrary = myLibrary.sort(
+        sortFunc(sortType, 'Object')
+        );
+
+    if (oldLibrary === newLibrary) {
+        newLibrary = newLibrary.reverse();
+        myLibrary = myLibrary.reverse();
+    }
 
     for (const entry of newLibrary) {
         document.querySelector(".library-entries").appendChild(entry);
     }
-
-    myLibrary = myLibrary.sort(sortFunc(sortType, 'Object'));
 }

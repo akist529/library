@@ -19,6 +19,23 @@ legend {
     text-align: center;
 }
 
+footer {
+    display: flex;
+    flex-direction: column;
+
+    color: white;
+
+    margin: 50px;
+}
+
+    footer a:link {
+        color: rgb(225, 225, 225);
+    }
+
+    footer a:visited {
+        color: rgb(185, 185, 185);
+    }
+
 .form-container-open {
     display: flex;
     position: fixed;
