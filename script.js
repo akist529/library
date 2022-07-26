@@ -154,25 +154,49 @@ function returnToForm() {
 }
 
 function sortLibrary(event) {
-    function sortFunc(sortType) {
+    function sortFunc(sortType, library) {
         return function(a, b) {
             let varA, varB;
     
             if (sortType === "Title") {
-                varA = a.firstChild.innerHTML.toUpperCase();
-                varB = b.firstChild.innerHTML.toUpperCase();
+                if (library === 'Document') {
+                    varA = a.firstChild.innerHTML.toUpperCase();
+                    varB = b.firstChild.innerHTML.toUpperCase();
+                }
+                else {
+                    varA = a.title.toUpperCase();
+                    varB = b.title.toUpperCase();
+                }
             }
             else if (sortType === "Author") {
-                varA = a.childNodes[1].innerHTML.toUpperCase();
-                varB = b.childNodes[1].innerHTML.toUpperCase();
+                if (library === 'Document') {
+                    varA = a.childNodes[1].innerHTML.toUpperCase();
+                    varB = b.childNodes[1].innerHTML.toUpperCase();
+                }
+                else {
+                    varA = a.author.toUpperCase();
+                    varB = b.author.toUpperCase();
+                }
             }
             else if (sortType === "Page Count") {
-                varA = Number(a.childNodes[2].innerHTML);
-                varB = Number(b.childNodes[2].innerHTML);
+                if (library === 'Document') {
+                    varA = Number(a.childNodes[2].innerHTML);
+                    varB = Number(b.childNodes[2].innerHTML);
+                }
+                else {
+                    varA = Number(a.pageCount);
+                    varB = Number(b.pageCount);
+                }
             }
             else if (sortType === "Read?") {
-                varA = a.childNodes[3].innerHTML;
-                varB = b.childNodes[3].innerHTML;
+                if (library === 'Document') {
+                    varA = a.childNodes[3].innerHTML;
+                    varB = b.childNodes[3].innerHTML;
+                }
+                else {
+                    varA = (a.readStatus === true) ? 1 : 0;
+                    varB = (b.readStatus === true) ? 1 : 0;
+                }
             }
     
             return (varA < varB) ? -1 : (varA > varB) ? 1 : 0;
@@ -184,17 +208,14 @@ function sortLibrary(event) {
 
     for (const entry of document.querySelectorAll("[class^=book]")) {
         oldLibrary.push(entry);
-    }
-
-    for (const entry of document.querySelectorAll("[class^=book]")) {
         entry.remove();
     }
 
-    let newLibrary = oldLibrary.sort(sortFunc(sortType));
+    let newLibrary = oldLibrary.sort(sortFunc(sortType, 'Document'));
 
     for (const entry of newLibrary) {
         document.querySelector(".library-entries").appendChild(entry);
     }
 
-    myLibrary = myLibrary.sort();
+    myLibrary = myLibrary.sort(sortFunc(sortType, 'Object'));
 }
