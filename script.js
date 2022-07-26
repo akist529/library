@@ -152,3 +152,49 @@ function checkAnswers() {
 function returnToForm() {
     document.querySelector('.duplicate-container').style.display = 'none';
 }
+
+function sortLibrary(event) {
+    function sortFunc(sortType) {
+        return function(a, b) {
+            let varA, varB;
+    
+            if (sortType === "Title") {
+                varA = a.firstChild.innerHTML.toUpperCase();
+                varB = b.firstChild.innerHTML.toUpperCase();
+            }
+            else if (sortType === "Author") {
+                varA = a.childNodes[1].innerHTML.toUpperCase();
+                varB = b.childNodes[1].innerHTML.toUpperCase();
+            }
+            else if (sortType === "Page Count") {
+                varA = Number(a.childNodes[2].innerHTML);
+                varB = Number(b.childNodes[2].innerHTML);
+            }
+            else if (sortType === "Read?") {
+                varA = a.childNodes[3].innerHTML;
+                varB = b.childNodes[3].innerHTML;
+            }
+    
+            return (varA < varB) ? -1 : (varA > varB) ? 1 : 0;
+        }
+    }
+
+    let sortType = event.target.innerHTML;
+    let oldLibrary = [];
+
+    for (const entry of document.querySelectorAll("[class^=book]")) {
+        oldLibrary.push(entry);
+    }
+
+    for (const entry of document.querySelectorAll("[class^=book]")) {
+        entry.remove();
+    }
+
+    let newLibrary = oldLibrary.sort(sortFunc(sortType));
+
+    for (const entry of newLibrary) {
+        document.querySelector(".library-entries").appendChild(entry);
+    }
+
+    myLibrary = myLibrary.sort();
+}
