@@ -33,6 +33,18 @@ function addBookToLibrary() {
     $(`.book${myLibrary.length}`).append(titleText, authorText, pageText, readText, delButton);
 
     $(`#book-del${myLibrary.length}`).attr("onClick", "deleteItem(event)");
+    $(`#book-read${myLibrary.length}`).hover(function() {
+        $(this).css("cursor", "pointer");
+    });
+    $(`#book-read${myLibrary.length}`).click(function() {
+        ($(this).text() === "No") ? $(this).text("Yes") : $(this).text("No");
+        
+        for (let i = 0; i < myLibrary.length; i++) {
+            if ($(this).parent().children(":first").text() === myLibrary[i].title) {
+                !myLibrary[i].readStatus;
+            }
+        }
+    });
 
     let titleNode = document.createTextNode(`${myLibrary[myLibrary.length - 1].title}`);
     $(`#book-title${myLibrary.length}`).append(titleNode);
