@@ -1,4 +1,4 @@
-let myLibrary = [];
+var myLibrary = [];
 
 class Book {
     constructor(title, author, pageCount, readStatus) {
@@ -10,20 +10,21 @@ class Book {
 }
 
 function addBookToLibrary() {
-    let title = document.getElementById("title").value;
-    let author = document.getElementById("author").value;
-    let pageCount = document.getElementById("pageCount").value;
-    let readStatus = document.getElementById("readStatus").checked;
+    let title = $("#title").val();
+    let author = $("#author").val();
+    let pageCount = $("#pageCount").val();
+    let readStatus = $("#readStatus").is(":checked");
     let book = new Book(title, author, pageCount, readStatus);
 
     myLibrary.push(book);
 
-    let bookDiv = document.createElement("div");
-    bookDiv.classList = `book${myLibrary.length}`;
-    bookDiv.setAttribute("onmouseover", `revealButton(${myLibrary.length}, event)`);
-    bookDiv.setAttribute("onmouseout", `revealButton(${myLibrary.length}, event)`);
-    document.querySelector(".library-entries").appendChild(bookDiv);
+    let bookDiv = $("<div></div>");
+    bookDiv.attr("onmouseover", `revealButton(${myLibrary.length}, event)`);
+    bookDiv.attr("onmouseout", `revealButton(${myLibrary.length}, event)`);
+    bookDiv.addClass(`book${myLibrary.length}`);
+    $(".library-entries").append(bookDiv);
 
+    /*
     let titleText = document.createElement("h3");
     titleText.id = `book-title${myLibrary.length}`;
     let authorText = document.createElement("h3");
@@ -36,11 +37,11 @@ function addBookToLibrary() {
     delButton.id = `book-del${myLibrary.length}`;
     delButton.innerHTML = "ERASE";
 
-    document.querySelector(`.book${myLibrary.length}`).appendChild(titleText);
-    document.querySelector(`.book${myLibrary.length}`).appendChild(authorText);
-    document.querySelector(`.book${myLibrary.length}`).appendChild(pageText);
-    document.querySelector(`.book${myLibrary.length}`).appendChild(readText);
-    document.querySelector(`.book${myLibrary.length}`).appendChild(delButton);
+    $(`.book${myLibrary.length}`).appendChild(titleText);
+    $(`.book${myLibrary.length}`).appendChild(authorText);
+    $(`.book${myLibrary.length}`).appendChild(pageText);
+    $(`.book${myLibrary.length}`).appendChild(readText);
+    $(`.book${myLibrary.length}`).appendChild(delButton);
 
     document.getElementById(`book-del${myLibrary.length}`).setAttribute("onClick", "deleteItem(event)");
 
@@ -62,18 +63,68 @@ function addBookToLibrary() {
     document.getElementById("author").value = "";
     document.getElementById("pageCount").value = "";
     document.getElementById("readStatus").checked = false;
+    */
+
+    let titleText = $("<h3></h3>");
+    titleText.id = `book-title${myLibrary.length}`;
+    let authorText = $("<h3></h3>");
+    authorText.id = `book-author${myLibrary.length}`;
+    let pageText = $("<h3></h3>");
+    pageText.id = `book-pages${myLibrary.length}`;
+    let readText = ("<h3></h3>");
+    readText.id = `book-read${myLibrary.length}`;
+    let delButton = ("<button></button");
+    delButton.id = `book-del${myLibrary.length}`;
+    delButton.innerHTML = "ERASE";
+
+    $(`.book${myLibrary.length}`).append(titleText);
+    $(`.book${myLibrary.length}`).append(authorText);
+    $(`.book${myLibrary.length}`).append(pageText);
+    $(`.book${myLibrary.length}`).append(readText);
+    $(`.book${myLibrary.length}`).append(delButton);
+
+    $(`#book-del${myLibrary.length}`).attr("onClick", "deleteItem(event)");
+
+    let titleNode = document.createTextNode(`${myLibrary[myLibrary.length - 1].title}`);
+    $(`#book-title${myLibrary.length}`).append(titleNode);
+    let authorNode = document.createTextNode(`${myLibrary[myLibrary.length - 1].author}`);
+    $(`#book-author${myLibrary.length}`).append(authorNode);
+    let pageNode = document.createTextNode(`${myLibrary[myLibrary.length - 1].pageCount}`);
+    $(`#book-pages${myLibrary.length}`).append(pageNode);
+    let readNode = document.createTextNode(
+        (readStatus === true) ? "Yes" : "No"
+    );
+    $(`#book-read${myLibrary.length}`).append(readNode);
+
+    changeHeader();
+    displayForm();
+
+    $("#title").value = "";
+    $("#author").value = "";
+    $("#pageCount").value = "";
+    $("#readStatus").checked = false;
 }
 
 function displayForm() {
+    /*
     if (document.getElementById("form-container").classList.value === "form-container-open") {
         document.getElementById("form-container").classList.value = "form-container-closed";
     }
     else {
         document.getElementById("form-container").classList.value = "form-container-open";
     }
+    */
+
+    if ($("#form-container").attr("class") === "form-container-open") {
+        $("#form-container").addClass("form-container-closed");
+    }
+    else {
+        $("#form-container").addClass("form-container-open");
+    }
 }
 
 function changeHeader() {
+    /*
     if (myLibrary.length) {
         document.querySelector(".library-default").style.display = "none";
         document.querySelector(".library-headers").style.display = "grid";
@@ -82,19 +133,51 @@ function changeHeader() {
         document.querySelector(".library-default").style.display = "grid";
         document.querySelector(".library-headers").style.display = "none";
     }
+    */
+
+    if (myLibrary.length) {
+        $(".library-default").style.display = "none";
+        $(".library-headers").style.display = "grid";
+    }
+    else {
+        $(".library-default").style.display = "grid";
+        $(".library-headers").style.display = "none";
+    }
 }
 
 function showReset() {
+    /*
     if (document.querySelector(".warning-container").style.display === "flex") {
         document.querySelector(".warning-container").style.display = "none";
     }
     else {
         document.querySelector(".warning-container").style.display = "flex";
     }
+    */
+
+    if ($(".warning-container").style.display === "flex") {
+        $(".warning-container").style.display = "none";
+    }
+    else {
+        $(".warning-container").style.display = "flex";
+    }
 }
 
 function resetForm() {
+    /*
     const books = document.querySelectorAll("div[class^='book']");
+    
+    myLibrary = [];
+
+    for (const book of books) {
+        book.remove();
+    }
+
+    changeHeader();
+    showReset();
+    */
+
+    const books = $("div[class^='book']");
     
     myLibrary = [];
 
@@ -107,15 +190,25 @@ function resetForm() {
 }
 
 function revealButton(bookNum, event) {
+    /*
     if (event.type === "mouseover") {
         document.getElementById(`book-del${bookNum}`).style.right = "5vw";
     }
     else {
         document.getElementById(`book-del${bookNum}`).style.right = "0vw";
     }
+    */
+
+    if (event.type === "mouseover") {
+        $(`#book-del${bookNum}`).style.right = "5vw";
+    }
+    else {
+        $(`#book-del${bookNum}`).style.right = "0vw";
+    }
 }
 
 function deleteItem(button) {
+    /*
     document.querySelector(`.${button.target.parentElement.className}`).style.maxHeight = "0";
 
     const bookNum = button.target.id[button.target.id.length - 1];
@@ -136,12 +229,43 @@ function deleteItem(button) {
         document.querySelector(".library-default").style.display = "none";
         document.querySelector(".library-headers").style.display = "grid";
     }
+    */
+
+    $(`.${button.target.parentElement.className}`).style.maxHeight = "0";
+
+    const bookNum = button.target.id[button.target.id.length - 1];
+    $(`.${button.target.parentElement.className}`).remove();
+
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].title === button.target.parentElement.childNodes[0].textContent) {
+            myLibrary.splice(i, 1);
+            break;
+        }
+    }
+
+    if (myLibrary.length === 0) {
+        $(".library-default").style.display = "grid";
+        $(".library-headers").style.display = "none";
+    }
+    else {
+        $(".library-default").style.display = "none";
+        $(".library-headers").style.display = "grid";
+    }
 }
 
 function checkAnswers() {
+    /*
     for (let i = 0; i < myLibrary.length; i++) {
         if (myLibrary[i].title === document.getElementById("title").value) {
             document.querySelector(".duplicate-container").style.display = "flex";
+            return;
+        }
+    }
+    */
+
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].title === $("#title").value) {
+            $(".duplicate-container").style.display = "flex";
             return;
         }
     }
@@ -150,7 +274,11 @@ function checkAnswers() {
 }
 
 function returnToForm() {
+    /*
     document.querySelector('.duplicate-container').style.display = 'none';
+    */
+
+    $('.duplicate-container').style.display = 'none';
 }
 
 function sortLibrary(event) {
